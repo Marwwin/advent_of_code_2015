@@ -58,4 +58,5 @@ describe("Grid2D", () => {
     grid.move({ x:-1, y: 0 });
     expect(grid.hasNeighbour({ x: 1, y: 0 })).toBeTruthy();
   });
+  
 });
