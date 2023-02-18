@@ -1,5 +1,7 @@
+import { equals } from "../Utility/Filters";
+
 export function countFloors(floors: string) {
-  const ups = floors.split("").filter((str) => str === "(").length;
+  const ups = floors.split("").filter(equals("(")).length;
   const downs = floors.length - ups;
   return ups - downs;
 }

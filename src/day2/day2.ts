@@ -1,12 +1,11 @@
-import { applyFuncsAndSum } from "../Mappers";
+import { removeIndex } from "../Utility/Filters";
+import { applyFuncsAndSum } from "../Utility/Mappers";
 import {
-  NumberFunction,
   funcSum,
   product,
-  reduceFuncs,
   sum,
   sumOfSquares,
-} from "../Reducers";
+} from "../Utility/Reducers";
 
 type TRectangle = [l: number, w: number, h: number];
 
@@ -21,7 +20,7 @@ export function calculateTotalRibbon(input: string) {
   const result = input
     .split("\n")
     .map(parseRectangleString)
-    .map(applyFuncsAndSum([getWrappingRibbon, getBowRibbon]))
+    .map(applyFuncsAndSum(getWrappingRibbon, getBowRibbon))
     .reduce(sum, 0);
   return result;
 }
@@ -53,5 +52,5 @@ function parseRectangleString(string: string) {
 
 function get2SmallestSides(rectangle: TRectangle) {
   const largestN = Math.max(...rectangle);
-  return rectangle.filter((n, i) => i !== rectangle.indexOf(largestN));
+  return rectangle.filter(removeIndex(rectangle.indexOf(largestN)));
 }

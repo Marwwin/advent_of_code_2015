@@ -1,7 +1,5 @@
-import { Coord } from "../src/Coord";
-import { Grid2D } from "../src/Grid2D";
+import { Grid2D } from "../src/Utility/Grid2D";
 import {
-  directions,
   createSanta,
   solvePart1,
   solvePart2,

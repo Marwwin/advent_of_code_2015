@@ -1,5 +1,5 @@
-import { Coord } from "../Coord";
-import { Grid2D } from "../Grid2D";
+import { Coord } from "../Utility/Coord";
+import { Grid2D } from "../Utility/Grid2D";
 import { input } from "./input";
 
 export type HouseDirection = "^" | ">" | "v" | "<";

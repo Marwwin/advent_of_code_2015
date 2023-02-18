@@ -32,6 +32,26 @@ export class Grid2D {
     this.set(nextCoord, this.get(nextCoord) + 1);
   };
 
+  toggle = (coord: Coord) =>
+    this.get(coord) === 0 ? this.set(coord, 1) : this.set(coord, 0);
+
+  add = (coord: Coord, value: number) => {
+    const current = this.get(coord);
+    current === 0 ? this.set(coord, value) : this.set(coord, current + value);
+  };
+
+  subtract = (coord: Coord, value: number) => {
+    const current = this.get(coord);
+    if (current === 0) {
+      return;
+    }
+    if (current - value < 0) {
+      this.set(coord, 0);
+      return;
+    }
+    this.set(coord, current - value);
+  };
+
   getCurrent = () => this.#currentCoord;
 
   getGrid = () => this.#grid;
