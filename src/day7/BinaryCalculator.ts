@@ -29,10 +29,10 @@ export function XOR<L extends number>(a: Byte<L>, b: Byte<L>) {
   return a.map((_, i) => (a[i] !== b[i] ? 1 : 0));
 }
 
-export function LSHIFT<L extends number>(a: Byte<L>) {
-  return a.map((_, i) => (i === a.length - 1 ? 0 : a[i + 1]));
+export function LSHIFT<L extends number>(a: Byte<L>, shift: number) {
+  return a.map((_, i) => (i >= a.length - shift ? 0 : a[i + shift]));
 }
 
-export function RSHIFT<L extends number>(a: Byte<L>) {
-  return a.map((_, i) => (i === 0 ? 0 : a[i - 1]));
+export function RSHIFT<L extends number>(a: Byte<L>, shift: number) {
+  return a.map((_, i) => (i < shift ? 0 : a[i - shift]));
 }
