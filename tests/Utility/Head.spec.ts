@@ -38,4 +38,16 @@ describe("Heap", () => {
     expect(heap.isLevelFull(14)).toBeFalsy();
     expect(heap.isLevelFull(15)).toBeTruthy();
   });
+  it("should get next position for element",()=>{
+    const heap = new Heap<number>();
+
+    expect(heap.nextElementPos(heap.size())).toEqual({level: 0, pos: 0})
+    heap.enqueue(10);
+    expect(heap.nextElementPos(heap.size())).toEqual({level: 1, pos: 0})
+    heap.enqueue(40);
+    expect(heap.nextElementPos(heap.size())).toEqual({level: 1, pos: 1})
+
+
+
+  })
 });
