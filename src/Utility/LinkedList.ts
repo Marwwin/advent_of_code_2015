@@ -14,14 +14,14 @@ export class LinkedList<T> {
       return;
     }
     if (this.#sortFn !== null) {
-      if (this.#sortFn(this.#root.getValue(), node.getValue()) > 0) {
-        node.setRight(this.#root);
-        this.#root = node;
-      }
-      if (this.#root.getRight() === null) {
-        this.#root.setRight(node);
-        return;
-      }
+      //if (this.#sortFn(this.#root.getValue(), node.getValue()) > 0) {
+      //  node.setRight(this.#root);
+      //  this.#root = node;
+      //}
+      //if (this.#root.getRight() === null) {
+      //  this.#root.setRight(node);
+      //  return;
+      //}
       this.insertValueWithSort(this.#root, node);
       return;
     }
