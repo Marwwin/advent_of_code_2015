@@ -1,4 +1,5 @@
 import { LinkedList } from "../Utility/LinkedList";
+import { MinHeap } from "../Utility/MinHeap";
 import { Keys } from "../Utility/Types";
 
 export interface Distance {
@@ -7,7 +8,7 @@ export interface Distance {
   value: number;
 }
 
-const cities = {
+export const cities = {
   Faerun: "Faerun",
   Norrath: "Norrath",
   Tristram: "Tristram",
@@ -18,20 +19,35 @@ const cities = {
   Straylight: "Straylight",
 } as const;
 
-type Cities = Keys<typeof cities>;
+export type Cities = Keys<typeof cities>;
+
+export function findShortest(city: Cities, map: any, visited: Cities[]): Cities[] {
+  console.log(city, visited)
+  visited.push(city);
+  if (visited.length === 8) {
+    return visited;
+  }
+  let next = map[city].dequeue();
+  console.log(next)
+  while (visited.includes(next.to)) {
+    next = map[city].dequeue();
+  }
+
+  return findShortest(next.to, map, visited);
+}
 
 export function parseInput(str: string) {
   const cityNames = [...getCities(str)];
   const cities = cityNames.reduce((acc: any, curr) => {
-    const list = new LinkedList<Distance>();
-    list.setSort((a, b) => a.value - b.value);
-    acc[curr] = list;
+    const heap = new MinHeap<Distance>();
+    heap.setSort((a, b) => a.value - b.value);
+    acc[curr] = heap;
     return acc;
   }, {});
   str.split("\n").forEach((e) => {
     const { from, to, value } = parseLocation(e);
-    cities[from].add({ to, value });
-    cities[to].add({ to: from, value });
+    cities[from].enqueue({ to, value });
+    cities[to].enqueue({ to: from, value });
   });
   return cities;
 }
