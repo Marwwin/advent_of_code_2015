@@ -3,7 +3,6 @@ import {
     findNumFromArray as findNumFromArray,
     generateCombinations,
     handle,
-    makeCombinations,
     parseInput,
 } from "../src/day17/day17";
 

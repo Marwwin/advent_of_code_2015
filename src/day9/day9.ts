@@ -21,6 +21,12 @@ export const cities = {
 
 export type Cities = Keys<typeof cities>;
 
+type Matrix = number[][];
+
+export function heldKarp(matrix: Matrix ){
+  
+}
+
 export function findShortest(city: Cities, map: any, visited: Cities[]): Cities[] {
   console.log(city, visited)
   visited.push(city);

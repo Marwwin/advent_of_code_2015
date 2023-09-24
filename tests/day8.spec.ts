@@ -1,13 +1,39 @@
-import { escapeChars, firstAndSecondIsDoubleQuote, getNumberOfChars } from "../src/day8/day8";
+import { countCharsAsIfInSource, escapeChars, firstAndSecondIsDoubleQuote, getNumberOfChars, numberOfChars, numberOfCodeChars, part1 } from "../src/day8/day8";
 import { input } from "../src/day8/input";
 
 describe("Day 8 Solutions", () => {
-  it("should solve part 1", () => {});
+  it("should solve part 1", () => {
+  });
   it("should solve part 2", () => {});
 });
 
-describe("Day 8 Tests", () => {
+describe('Day8', () => { 
+  const testData = `""
+  "abc"
+  "aaa\"aaa"
+  "\x27"
+`
+  it("get code length ",()=>{
+    expect(countCharsAsIfInSource(`""`)).toBe(2)
+    expect(countCharsAsIfInSource(`"abc"`)).toBe(5)
+    expect(countCharsAsIfInSource(`"aaa\"aaa"`)).toBe(10)
+    expect(countCharsAsIfInSource(`"\x27"`)).toBe(4)
 
+  })
+  it("get char lengths",()=>{
+    expect(numberOfChars(`""`)).toBe(0)
+    expect(numberOfChars(`"abc"`)).toBe(3)
+    expect(numberOfChars(`"aaa\"aaa"`)).toBe(7)
+    expect(numberOfChars(`"\x27"`)).toBe(1)
+  })
+ })
+
+describe("Day 8 Tests", () => {
+  const testData = `""
+  "abc"
+  "aaa\"aaa"
+  "\x27"
+`
 
   it("Should give negative points for escape chars", () => {
     expect(escapeChars["\\"]).toBe(2);
